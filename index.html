@@ -1,406 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yeo Kheong Jie - Computer Engineering Portfolio</title>
-    <style>
-        /* INTEGRATED REFERRED STYLES */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yeo Kheong Jie — Computer Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --text-dark: #2c3e50;
-            --text-light: #7f8c8d;
-            --bg-light: #f8f9fa;
-            --white: #ffffff;
-            --shadow: 0 5px 15px rgba(0,0,0,0.08);
-            --shadow-hover: 0 8px 25px rgba(0,0,0,0.15);
-            --success: #27ae60;
-            --warning: #f39c12;
-        }
+  :root {
+    --navy:   #1a2332;
+    --mid:    #2c3e50;
+    --blue:   #3b82f6;
+    --blue-light: #60a5fa;
+    --slate:  #64748b;
+    --muted:  #94a3b8;
+    --bg:     #f8fafc;
+    --white:  #ffffff;
+    --green:  #22c55e;
+    --amber:  #f59e0b;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
+    --shadow:    0 4px 16px rgba(0,0,0,0.08);
+    --shadow-lg: 0 10px 32px rgba(0,0,0,0.12);
+  }
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: var(--white);
-            scroll-behavior: smooth;
-        }
+  html { scroll-behavior: smooth; }
 
-        /* Navigation - Glassmorphism */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1.2rem 0;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-        }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--mid);
+    background: var(--white);
+  }
 
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    z-index: 100;
+  }
+  nav .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.45rem;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  nav ul { list-style: none; display: flex; gap: 2.2rem; }
+  nav a {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--slate);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.2s;
+    position: relative;
+    padding-bottom: 2px;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 2px;
+    background: var(--blue);
+    border-radius: 2px;
+    transition: width 0.25s ease;
+  }
+  nav a:hover { color: var(--navy); }
+  nav a:hover::after { width: 100%; }
 
-        nav .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
-        nav ul { display: flex; list-style: none; gap: 2rem; }
-        nav a { color: var(--text-dark); text-decoration: none; font-weight: 500; transition: color 0.3s; position: relative; }
-        nav a:hover { color: var(--accent-color); }
-        nav a::after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px; background: var(--accent-color); transition: width 0.3s; }
-        nav a:hover::after { width: 100%; }
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(140deg, var(--navy) 0%, #1e3a5f 55%, #2563eb 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+    padding-top: 64px;
+  }
+  .hero-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    animation: gridDrift 30s linear infinite;
+  }
+  @keyframes gridDrift {
+    to { transform: translate(48px, 48px); }
+  }
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,130,246,0.25) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  #home .wrap {
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--blue-light);
+    margin-bottom: 1.5rem;
+  }
+  .hero-eyebrow span {
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--blue-light);
+  }
+  #home h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5.5vw, 4.4rem);
+    line-height: 1.1;
+    margin-bottom: 1.4rem;
+    letter-spacing: -0.02em;
+    max-width: 700px;
+  }
+  #home h1 em {
+    font-style: italic;
+    color: var(--blue-light);
+  }
+  #home .lead {
+    font-size: 1.08rem;
+    font-weight: 300;
+    max-width: 540px;
+    line-height: 1.8;
+    opacity: 0.88;
+    margin-bottom: 2.5rem;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.85rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+    transition: all 0.25s;
+    letter-spacing: 0.01em;
+  }
+  .btn-white {
+    background: white;
+    color: var(--navy);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+  }
+  .btn-white:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(0,0,0,0.24);
+  }
+  .hero-meta {
+    margin-top: 4rem;
+    display: flex;
+    gap: 3rem;
+    opacity: 0.65;
+    font-size: 0.82rem;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+  .hero-meta strong { display: block; font-weight: 600; font-size: 0.95rem; opacity: 1; margin-bottom: 0.1rem; }
 
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
+  /* ── SECTION BASE ── */
+  section { padding: 7rem 2rem; }
+  .wrap { max-width: 1160px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 1rem;
+  }
+  .section-label span {
+    display: inline-block;
+    width: 22px; height: 1px;
+    background: var(--blue);
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .section-sub {
+    color: var(--slate);
+    font-size: 1rem;
+    font-weight: 300;
+    max-width: 480px;
+  }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
-        }
+  /* ── ABOUT ── */
+  #about { background: var(--bg); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 4rem;
+  }
+  .about-photo-wrap {
+    position: sticky;
+    top: 84px;
+  }
+  .about-photo {
+    width: 100%;
+    aspect-ratio: 4/5;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    background: #dde4ef;
+  }
+  .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about-text h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.5rem;
+    color: var(--navy);
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .about-text p { color: var(--slate); margin-bottom: 1rem; font-size: 0.97rem; }
+  .about-text p strong { color: var(--mid); font-weight: 600; }
+  .skills-heading {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+  .skill-chip {
+    padding: 0.42rem 1rem;
+    border-radius: 50px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    background: white;
+    border: 1.5px solid #e2e8f0;
+    color: var(--mid);
+    transition: all 0.2s;
+  }
+  .skill-chip:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+  }
 
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
+  /* ── PASSION ── */
+  #passion { background: white; }
+  .passion-header { margin-bottom: 4rem; }
+  .passion-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .passion-card {
+    padding: 2.4rem 2rem;
+    border-radius: 16px;
+    border: 1.5px solid #e8edf3;
+    background: var(--bg);
+    transition: all 0.25s;
+  }
+  .passion-card:hover {
+    border-color: var(--blue);
+    background: white;
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+  }
+  .passion-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+  .passion-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.3rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.01em;
+  }
+  .passion-card p { color: var(--slate); font-size: 0.93rem; line-height: 1.7; }
 
-        .hero .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; font-weight: 700; }
-        .hero .subtitle { font-size: 1.5rem; margin-bottom: 2rem; opacity: 0.9; font-weight: 500;}
-        .hero p { font-size: 1.1rem; max-width: 600px; line-height: 1.8; margin-bottom: 2rem; }
+  /* ── RESEARCH ── */
+  #research { background: var(--bg); }
+  .research-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .research-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2.2rem;
+    box-shadow: var(--shadow-sm);
+    border: 1.5px solid #e8edf3;
+    border-top: 4px solid var(--blue);
+    transition: all 0.25s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+  .research-card.published { border-top-color: var(--green); }
+  .research-card.ongoing   { border-top-color: var(--amber); }
+  .research-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.32rem 0.9rem;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+  .badge.green { background: #dcfce7; color: #166534; }
+  .badge.amber { background: #fef3c7; color: #92400e; }
+  .research-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.25rem;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  .research-card p { color: var(--slate); font-size: 0.93rem; line-height: 1.7; flex: 1; }
+  .research-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--blue);
+    font-weight: 600;
+    font-size: 0.86rem;
+    text-decoration: none;
+    transition: gap 0.2s;
+    margin-top: 0.4rem;
+  }
+  .research-link:hover { gap: 0.7rem; }
 
-        .cta-button {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: var(--primary-color);
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.65);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .footer-quote {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.78);
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.8;
+  }
+  .footer-name {
+    font-weight: 600;
+    color: white;
+    font-size: 0.92rem;
+    margin-bottom: 0.25rem;
+  }
+  .footer-sub {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    margin-bottom: 2rem;
+  }
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.4rem;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.18);
+    padding: 0.45rem 1.1rem;
+    border-radius: 50px;
+    transition: all 0.2s;
+  }
+  .footer-links a:hover {
+    color: white;
+    border-color: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.07);
+  }
 
-        /* Section Styling */
-        section { padding: 6rem 2rem; }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .section-header { text-align: center; margin-bottom: 4rem; }
-        .section-header h2 { font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem; position: relative; display: inline-block; }
-        .section-header h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 60px; height: 4px; background: var(--accent-color); border-radius: 2px; }
-        .section-header p { color: var(--text-light); font-size: 1.1rem; max-width: 600px; margin: 1.5rem auto 0; }
-
-        /* About Section */
-        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-        .about-image { width: 100%; height: 400px; background: #e2e8f0; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow); }
-        .about-image img { width: 100%; height: 100%; object-fit: cover; }
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1rem; margin-top: 2rem; }
-        .skill-tag { background: var(--bg-light); padding: 0.8rem; border-radius: 10px; text-align: center; font-weight: 500; border: 2px solid transparent; transition: all 0.3s; }
-        .skill-tag:hover { border-color: var(--accent-color); transform: translateY(-3px); background: white;}
-
-        /* Passion Section */
-        .passion-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .passion-card { background: var(--bg-light); padding: 2.5rem; border-radius: 15px; text-align: center; transition: all 0.3s; border: 1px solid #eee; }
-        .passion-card:hover { transform: translateY(-5px); background: white; box-shadow: var(--shadow); }
-        .passion-icon { font-size: 3rem; margin-bottom: 1.5rem; display: block; }
-
-        /* Research Section */
-        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2.5rem; }
-        .research-card { background: white; border-radius: 15px; padding: 2rem; box-shadow: var(--shadow); border-left: 4px solid var(--accent-color); transition: all 0.3s; }
-        .research-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); }
-        .research-card.completed { border-left-color: var(--success); }
-        .research-card.ongoing { border-left-color: var(--warning); }
-        .res-badge { display: inline-block; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1.2rem; }
-        .badge-success { background: #dcfce7; color: #166534; }
-        .badge-warning { background: #fef3c7; color: #92400e; }
-
-/* UPDATED PADLET SECTION - RESIZED BOXES */
-        .padlet-item {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr; /* Adjusted for better visibility */
-            margin-bottom: 4rem;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s;
-            border: 1px solid #eee;
-        }
-        .padlet-item:hover { box-shadow: var(--shadow-hover); transform: scale(1.01); }
-        .padlet-screenshot-wrapper { 
-            background: #f1f5f9; 
-            min-height: 450px; /* Increased height to show more image content */
-            display: flex;
-            align-items: flex-start; /* Ensure top of screenshot is visible */
-        }
-        .padlet-screenshot-wrapper img { 
-            width: 100%; 
-            height: auto; 
-            display: block;
-            object-fit: contain; /* Shows complete image without cropping */
-        }
-        .padlet-details { padding: 3rem; display: flex; flex-direction: column; justify-content: center; }
-        .week-label { background: var(--accent-color); color: white; padding: 0.4rem 1.2rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; width: fit-content; }
-        
-        /* Footer */
-        footer { background: var(--primary-color); color: white; padding: 4rem 2rem; text-align: center; }
-        .footer-reflection { max-width: 800px; margin: 0 auto 2.5rem; font-style: italic; opacity: 0.9; line-height: 1.8; }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .about-content, .padlet-item { grid-template-columns: 1fr; }
-            .padlet-screenshot-wrapper { height: 200px; }
-            nav ul { display: none; }
-        }
-    </style>
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-photo-wrap { position: static; }
+    .about-photo { max-width: 280px; aspect-ratio: 1/1; }
+    .passion-cards { grid-template-columns: 1fr; }
+    .research-cards { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    nav ul { display: none; }
+    #home h1 { font-size: 2.4rem; }
+    section { padding: 5rem 1.5rem; }
+    .hero-meta { flex-direction: column; gap: 1rem; }
+  }
+</style>
 </head>
 <body>
 
-    <nav>
-        <div class="container">
-            <div class="logo">YKJ.</div>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#passion">Passion</a></li>
-                <li><a href="#research">Research</a></li>
-                <li><a href="#padlet">Padlet</a></li>
-            </ul>
+<!-- NAVIGATION -->
+<nav>
+  <div class="wrap">
+    <div class="logo">YKJ.</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#passion">Passion</a></li>
+      <li><a href="#research">Research</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <p class="hero-eyebrow"><span></span> Computer Engineering Portfolio</p>
+    <h1>Hi, I'm <em>Yeo Kheong Jie</em></h1>
+    <p class="lead">
+      I transform complex problems into elegant solutions through code, creativity, and continuous learning — currently bridging Deep Learning and industrial agricultural applications.
+    </p>
+    <a href="#research" class="btn btn-white">View My Work</a>
+    <div class="hero-meta">
+      <div><strong>B022220074</strong>Bachelor of Computer Engineering</div>
+      <div><strong>UTeM · FTKEK</strong>Semester 1, 2025/2026</div>
+      <div><strong>BERR4723</strong>Digital Image Processing</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <p class="section-label"><span></span> About Me</p>
+    <h2 class="section-title">The person<br>behind the code</h2>
+    <div class="about-grid">
+      <div class="about-photo-wrap">
+        <div class="about-photo">
+          <img src="Images/profile_photo.avif" alt="Yeo Kheong Jie">
         </div>
-    </nav>
-
-    <section id="home" class="hero">
-        <div class="container">
-            <h1>Hi, I'm Yeo Kheong Jie</h1>
-            <div class="subtitle">Computer Engineering Student & Digital Innovator</div>
-            <p>I transform complex problems into elegant solutions through code, creativity, and continuous learning. Currently bridging the gap between Deep Learning and industrial agricultural applications.</p>
-            <a href="#padlet" class="cta-button">View My Work</a>
+      </div>
+      <div class="about-text">
+        <h3>Passionate Computer Engineering Student</h3>
+        <p>
+          My journey is driven by a desire to create meaningful digital experiences. From optimising IoT micro-climates to developing CNN architectures for automated grading, I believe technology should solve real-world challenges.
+        </p>
+        <p>
+          Currently studying at <strong>UTeM (FTKEK)</strong>, I focus on AI in medical imaging, IoT networks, and Python automation — committed to continuous learning and industrial application.
+        </p>
+        <p class="skills-heading">Technical Skills</p>
+        <div class="skills-wrap">
+          <span class="skill-chip">Python</span>
+          <span class="skill-chip">MATLAB</span>
+          <span class="skill-chip">TensorFlow</span>
+          <span class="skill-chip">C++ / Java</span>
+          <span class="skill-chip">Arduino</span>
+          <span class="skill-chip">Git</span>
+          <span class="skill-chip">OpenCV</span>
+          <span class="skill-chip">VS Code</span>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="about">
-        <div class="container">
-            <div class="section-header">
-                <h2>About Me</h2>
-                <p>Getting to know the person behind the code</p>
-            </div>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="Images/profile_photo.avif" alt="Yeo Kheong Jie Profile">
-                </div>
-                <div class="about-text">
-                    <h3>Passionate Computer Engineering Student</h3>
-                    <p>My journey is driven by a desire to create meaningful digital experiences. From optimizing IoT micro-climates to developing CNN architectures for automated grading, I believe technology should solve real-world challenges.</p>
-                    <p>Currently studying at <strong>UTeM (FTKEK)</strong>, I focus on AI in medical imaging, IoT networks, and Python automation. I am committed to continuous learning and industrial application.</p>
-                    
-                    <h3 style="margin-top: 2rem; font-size: 1.2rem;">Technical Skills</h3>
-                    <div class="skills-grid">
-                        <div class="skill-tag">Python</div>
-                        <div class="skill-tag">MATLAB</div>
-                        <div class="skill-tag">TensorFlow</div>
-                        <div class="skill-tag">C++ / Java</div>
-                        <div class="skill-tag">Arduino</div>
-                        <div class="skill-tag">Git</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- PASSION -->
+<section id="passion">
+  <div class="wrap">
+    <div class="passion-header">
+      <p class="section-label"><span></span> Philosophy</p>
+      <h2 class="section-title">Passion for Excellence</h2>
+      <p class="section-sub">The values that shape how I approach every engineering challenge.</p>
+    </div>
+    <div class="passion-cards">
+      <div class="passion-card">
+        <span class="passion-icon">💡</span>
+        <h3>Problem Solving</h3>
+        <p>I thrive on finding innovative, first-principles solutions to complex technical challenges — breaking problems down and building answers up.</p>
+      </div>
+      <div class="passion-card">
+        <span class="passion-icon">🤝</span>
+        <h3>Collaboration</h3>
+        <p>Diverse perspectives lead to superior, more robust engineering designs. I actively seek out teamwork that challenges and sharpens my thinking.</p>
+      </div>
+      <div class="passion-card">
+        <span class="passion-icon">🚀</span>
+        <h3>Continuous Learning</h3>
+        <p>Committed to staying current with the rapid evolution of technology — from deep learning advances to new embedded systems paradigms.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="passion" style="background: white;">
-        <div class="container">
-            <div class="section-header">
-                <h2>Passion for Excellence</h2>
-                <p>What drives my engineering philosophy</p>
-            </div>
-            <div class="passion-grid">
-                <div class="passion-card">
-                    <span class="passion-icon">💡</span>
-                    <h3>Problem Solving</h3>
-                    <p>I thrive on finding innovative solutions to complex technical hurdles.</p>
-                </div>
-                <div class="passion-card">
-                    <span class="passion-icon">🤝</span>
-                    <h3>Collaboration</h3>
-                    <p>I believe diverse perspectives lead to superior, more robust engineering designs.</p>
-                </div>
-                <div class="passion-card">
-                    <span class="passion-icon">🚀</span>
-                    <h3>Continuous Learning</h3>
-                    <p>Commited to staying current with the rapid evolution of technology and tools.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- RESEARCH -->
+<section id="research">
+  <div class="wrap">
+    <p class="section-label"><span></span> Research &amp; Projects</p>
+    <h2 class="section-title">Academic Contributions</h2>
+    <p class="section-sub">Published work and ongoing investigations at the intersection of AI and industrial applications.</p>
+    <div class="research-cards">
 
-    <section id="research" style="background: var(--bg-light);">
-        <div class="container">
-            <div class="section-header">
-                <h2>Research & Projects</h2>
-                <p>Academic contributions and ongoing investigations</p>
-            </div>
-            <div class="research-grid">
-                <div class="research-card completed">
-                    <span class="res-badge badge-success">✓ Published Research</span>
-                    <h3>IoT-Based Greenhouse Monitoring</h3>
-                    <p>Implemented a smart system using DHT11 and MQ135 sensors to mitigate industrial pollution impacts on agriculture.</p>
-                    <a href="https://digital-library.theiet.org/doi/pdf/10.1049/icp.2022.2651" target="_blank" style="color: var(--accent-color); font-weight: 600; text-decoration: none; font-size: 0.9rem; margin-top: 1rem; display: block;">Read Paper &rarr;</a>
-                </div>
+      <div class="research-card published">
+        <span class="badge green">✓ Published Research</span>
+        <h3>IoT-Based Greenhouse Monitoring</h3>
+        <p>
+          Designed and implemented a smart environmental monitoring system using DHT11 and MQ135 sensors to detect temperature, humidity, and air quality — mitigating the impact of industrial pollution on agricultural micro-climates.
+        </p>
+        <a class="research-link" href="https://digital-library.theiet.org/doi/pdf/10.1049/icp.2022.2651" target="_blank">
+          Read Paper →
+        </a>
+      </div>
 
-                <div class="research-card ongoing">
-                    <span class="res-badge badge-warning">⏳ Ongoing (PSM1)</span>
-                    <h3>Deep Learning-Based Oil Palm Ripeness Classification</h3>
-                    <p>Designing a CNN-based system to replace manual grading with high-precision detection (Unripe, Under-ripe, Ripe, Over-ripe) to optimize OER.</p>
-                    <a href="Documents/PSM1_Project_Proposal_B022220074_Yeo_Kheong_Jie.pdf" target="_blank" style="color: var(--accent-color); font-weight: 600; text-decoration: none; font-size: 0.9rem; margin-top: 1rem; display: block;">View Proposal PDF &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="research-card ongoing">
+        <span class="badge amber">⏳ Ongoing · PSM1</span>
+        <h3>Deep Learning-Based Oil Palm Ripeness Classification</h3>
+        <p>
+          Designing a CNN-based vision system to replace manual oil palm grading with high-precision, automated classification across four ripeness stages — Unripe, Under-ripe, Ripe, and Over-ripe — to optimise Oil Extraction Rate (OER).
+        </p>
+        <a class="research-link" href="Documents/PSM1_Project_Proposal_B022220074_Yeo_Kheong_Jie.pdf" target="_blank">
+          View Proposal PDF →
+        </a>
+      </div>
 
-    <section id="padlet">
-        <div class="container">
-            <div class="section-header">
-                <h2>Padlet Journey</h2>
-                <p>Technical Padlet milestones in Digital Image Processing (BERR4723) </p>
-            </div>
+    </div>
+  </div>
+</section>
 
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec02.png" alt="Intro"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 02</span>
-                    <h4>Introduction</h4>
-                    <p>Foundation setup for the portfolio journey at UTeM.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec03.png" alt="Acquisition"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 03</span>
-                    <h4>Image Acquisition</h4>
-                    <p>Studied Images as 2D functions f(x,y) and vision goals.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec04.png" alt="Sampling"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 04</span>
-                    <h4>Fundamentals</h4>
-                    <p>Analyzed Spatial vs. Intensity Resolution; Sampling & Quantization.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec05.png" alt="Enhancement"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 05</span>
-                    <h4>Enhancement</h4>
-                    <p>Applied Histogram Equalization and Spatial Filters for noise reduction.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec06.png" alt="Restoration"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 06</span>
-                    <h4>Restoration</h4>
-                    <p>Applied Wiener Filtering using the Degradation Model.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec07.png" alt="Reflection"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 07</span>
-                    <h4>Reflection</h4>
-                    <p>Insight: The leap from grayscale to color and multi-stage engineering workflows.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec08.png" alt="Geometric Trans"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 08</span>
-                    <h4>Geometric Trans.</h4>
-                    <p>Applied Scaling, Rotation, and Translation with Bilinear Interpolation.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec09.png" alt="Color"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 09</span>
-                    <h4>Color Processing</h4>
-                    <p>Leveraged HSI color space for robust segmentation in varying light.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec10.png" alt="Wavelet Trans"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 10</span>
-                    <h4>Wavelet Trans.</h4>
-                    <p>Multi-resolution analysis. Used Wavelets to isolate localized edges/textures.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec11.png" alt="Compression"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 11</span>
-                    <h4>Compression</h4>
-                    <p>Evaluated Lossy vs. Lossless methods using PSNR metrics.</p>
-                </div>
-            </div>
-
-            <div class="padlet-item">
-                <div class="padlet-screenshot-wrapper"><img src="Images/sec12.png" alt="Misc"></div>
-                <div class="padlet-details">
-                    <span class="week-label">Section 12</span>
-                    <h4>Miscellaneous</h4>
-                    <p>Group project artifacts, lab reports, and peer interactions.</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-reflection">
-                "This webpage reflects my Digital Portfolio."
-                "Reflection: This course redefined my perspective on computer vision. This portfolio serves as a milestone of my ability to solve real-world problems—specifically in agriculture and IoT—using the analytical tools and image processing techniques developed throughout the semester. Building this portfolio has been a dual journey in technical mastery and professional branding. Beyond mastering Digital Image Processing algorithms like Histogram Equalization and Wiener Filtering, I have learned to communicate complex engineering concepts through a clean, accessible digital medium." 
-            </div>
-            <p>&copy; 2026 Yeo Kheong Jie | B022220074 </p>
-            <p style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.7;">UTeM Faculty of Electronics and Computer Engineering (FTKEK) </p>
-
-            <div class="social-links">
-                <a href="https://github.com/JeffYeo0406" target="_blank">GitHub Profile</a>
-                <a href="https://www.linkedin.com/in/yeo-kheong-jie-1038421b4/" target="_blank">LinkedIn Profile</a>
-            </div>
-
-        </div>
-    </footer>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <p class="footer-quote">
+      "As an active learner, I constantly seek to expand my knowledge in computer science engineering. My commitment to continuous learning deepens my understanding of emerging technologies, while strengthening my ability to present technical ideas clearly through digital platforms."
+    </p>
+    <p class="footer-name">Yeo Kheong Jie · B022220074</p>
+    <p class="footer-sub">UTeM · Faculty of Electronics and Computer Engineering (FTKEK) · © 2026</p>
+    <div class="footer-links">
+      <a href="https://github.com/JeffYeo0406" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/yeo-kheong-jie-1038421b4/" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
