@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yeo Kheong Jie — Computer Engineering Portfolio</title>
+<meta name="description" content="Computer Engineering graduate building cloud-deployed AI systems — from edge inference to AWS infrastructure. JLPT N2 certified.">
+<title>Yeo Kheong Jie — Cloud Data Engineer / AI Platform Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
@@ -24,9 +25,26 @@
     --shadow-sm: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.05);
     --shadow:    0 4px 16px rgba(0,0,0,0.08);
     --shadow-lg: 0 10px 32px rgba(0,0,0,0.12);
+
+    /* Portfolio-section mapped variables (blended into existing palette) */
+    --portfolio-bg:        var(--white);
+    --portfolio-surface:   var(--bg);
+    --portfolio-border:    #e8edf3;
+    --portfolio-text:      var(--navy);
+    --portfolio-text-muted: var(--slate);
+    --portfolio-accent:    var(--blue);
+    --portfolio-accent-soft: #eff6ff;
+    --portfolio-radius:    16px;
+    --portfolio-gap:       1.5rem;
+    --status-production-bg:   #dcfce7;
+    --status-production-text: #166534;
+    --status-demo-bg:         #dbeafe;
+    --status-demo-text:       #1e40af;
+    --status-learning-bg:     #fef3c7;
+    --status-learning-text:   #92400e;
   }
 
-  html { scroll-behavior: smooth; }
+  html { font-size: 17px; scroll-behavior: smooth; }
 
   body {
     font-family: 'DM Sans', sans-serif;
@@ -433,11 +451,283 @@
     .passion-cards { grid-template-columns: 1fr; }
     .research-cards { grid-template-columns: 1fr; }
   }
+  /* ── HERO ADDITIONS ── */
+  .hero__target-role {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.75);
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .hero__target-role strong {
+    display: inline-block;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: white;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 0.2rem 0.7rem;
+    border-radius: 6px;
+    letter-spacing: 0.01em;
+  }
+  .hero__badge {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--status-production-text);
+    background: var(--status-production-bg);
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+  }
+  .hero__status {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── CERTIFICATIONS ── */
+  .certifications {
+    padding: 7rem 2rem;
+    background: var(--white);
+  }
+  .cert-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    max-width: 900px;
+  }
+  .cert-list__item {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.7rem 1rem;
+    background: var(--portfolio-surface);
+    border: 1px solid var(--portfolio-border);
+    border-radius: 8px;
+    flex-wrap: wrap;
+  }
+  .cert-list__name {
+    font-size: 0.92rem;
+    color: var(--portfolio-text);
+  }
+  .cert-list__status--progress {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--status-demo-text);
+    background: var(--status-demo-bg);
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+  }
+  .cert-list__date {
+    font-size: 0.8rem;
+    color: var(--portfolio-text-muted);
+  }
+
+  /* ── GROUPED SKILLS ── */
+  .skills {
+    padding: 7rem 2rem;
+    background: var(--white);
+  }
+  .skills-group {
+    margin-top: 1.5rem;
+  }
+  .skills-group__label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+  .skills-group__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .skills-group__list li {
+    font-size: 0.85rem;
+    background: var(--portfolio-accent-soft);
+    color: var(--portfolio-accent);
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+  }
+
+  /* ── PORTFOLIO ── */
+  .portfolio {
+    padding: 7rem 2rem;
+    background: var(--bg);
+    color: var(--portfolio-text);
+  }
+  .portfolio__intro {
+    margin-bottom: 3rem;
+  }
+  .portfolio__subheading {
+    color: var(--slate);
+    font-size: 1rem;
+    font-weight: 300;
+    max-width: 560px;
+    line-height: 1.7;
+  }
+  .portfolio__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--portfolio-gap);
+    max-width: 1100px;
+  }
+  .project-card {
+    background: var(--white);
+    border: 1.5px solid var(--portfolio-border);
+    border-radius: var(--portfolio-radius);
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .project-card:hover,
+  .project-card:focus-within {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+  .project-card__status {
+    align-self: flex-start;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+  }
+  .project-card__status--production {
+    background: var(--status-production-bg);
+    color: var(--status-production-text);
+  }
+  .project-card__status--demo {
+    background: var(--status-demo-bg);
+    color: var(--status-demo-text);
+  }
+  .project-card__status--learning {
+    background: var(--status-learning-bg);
+    color: var(--status-learning-text);
+  }
+  .project-card__title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--navy);
+    letter-spacing: -0.01em;
+  }
+  .project-card__desc {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--slate);
+    flex: 1;
+  }
+  .project-card__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .project-card__stack li {
+    font-size: 0.75rem;
+    background: var(--portfolio-accent-soft);
+    color: var(--portfolio-accent);
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+  }
+  .project-card__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 0.25rem;
+  }
+  .project-card__link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--slate);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .project-card__link:hover,
+  .project-card__link:focus-visible {
+    color: var(--blue);
+    border-color: var(--blue);
+  }
+  .project-card__link--primary {
+    color: var(--blue);
+    border-color: var(--blue);
+  }
+  .project-card a:focus-visible {
+    outline: 2px solid var(--blue);
+    outline-offset: 2px;
+  }
+
+  /* ── RESEARCH UPDATES ── */
+  .research-item__note {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--slate);
+    margin: 0.75rem 0;
+  }
+  .research-item__note a {
+    color: var(--blue);
+  }
+  .research-item__link--disabled {
+    color: var(--muted);
+    opacity: 0.5;
+    pointer-events: none;
+    text-decoration: line-through;
+    font-size: 0.86rem;
+    font-weight: 600;
+    margin-top: 0.4rem;
+    display: inline-block;
+  }
+
+  /* ── FOOTER ADDITIONS ── */
+  .footer__updated {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 1rem;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-photo-wrap { position: static; }
+    .about-photo { max-width: 280px; aspect-ratio: 1/1; }
+    .passion-cards { grid-template-columns: 1fr; }
+    .research-cards { grid-template-columns: 1fr; }
+    .portfolio__grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 640px) {
     nav ul { display: none; }
     #home h1 { font-size: 2.4rem; }
     section { padding: 5rem 1.5rem; }
     .hero-meta { flex-direction: column; gap: 1rem; }
+    .cert-list__item { flex-direction: column; align-items: flex-start; gap: 0.4rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .project-card { transition: none; }
   }
 </style>
 </head>
@@ -451,6 +741,7 @@
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#passion">Passion</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#research">Research</a></li>
     </ul>
   </div>
@@ -462,11 +753,18 @@
   <div class="hero-glow"></div>
   <div class="wrap">
     <p class="hero-eyebrow"><span></span> Computer Engineering Portfolio</p>
-    <h1>Hi, I'm <em>Yeo Kheong Jie</em></h1>
+    <h1>Hi, I'm <em>Yeo Kheong Jie</em><span class="hero__badge">JLPT N2 Certified</span></h1>
     <p class="lead">
       I transform complex problems into elegant solutions through code, creativity, and continuous learning — currently bridging Deep Learning and industrial agricultural applications.
     </p>
-    <a href="#research" class="btn btn-white">View My Work</a>
+    <p class="hero__target-role">
+      Currently seeking <strong>Cloud Data Engineer</strong> or
+      <strong>AI Platform Engineer</strong> roles.
+    </p>
+    <p class="hero__status">
+      Currently studying: AWS Certified AI Practitioner
+    </p>
+    <a href="#portfolio" class="btn btn-white">View My Work</a>
     <div class="hero-meta">
       <div><strong>B022220074</strong>Bachelor of Computer Engineering</div>
       <div><strong>Academic</strong>Diploma in Electronic Engineering</div>
@@ -487,26 +785,52 @@
         </div>
       </div>
       <div class="about-text">
-        <h3>Passionate Computer Engineering Student</h3>
+        <h3>Computer Engineering Graduate</h3>
         <p>
           My journey is driven by a desire to create meaningful digital experiences. From optimising IoT micro-climates solutions to developing CNN architectures for automated grading, I believe technology should solve real-world challenges.
         </p>
         <p>
-          Currently studying at <strong>UTeM (FTKEK)</strong>, I focus on AI / ML in IoT networks, and Python automation, which committed to continuous learning and industrial application.
+          Graduating from <strong>UTeM (FTKEK)</strong>, I focus on AI / ML in IoT networks, and Python automation, committed to continuous learning and industrial application.
         </p>
-        <p class="skills-heading">Technical Skills</p>
-        <div class="skills-wrap">
-          <span class="skill-chip">Python</span>
-          <span class="skill-chip">MATLAB</span>
-          <span class="skill-chip">TensorFlow</span>
-          <span class="skill-chip">C++ / Java</span>
-          <span class="skill-chip">Arduino</span>
-          <span class="skill-chip">Git</span>
-          <span class="skill-chip">OpenCV</span>
-          <span class="skill-chip">VS Code</span>
-        </div>
+        <p style="margin-top:1.5rem;">
+          <a href="Documents/YeoKheongJie_Resume_2026v4.pdf" class="btn btn-white" style="background:var(--navy);color:white;box-shadow:var(--shadow-sm);" target="_blank">📄 Download Resume</a>
+        </p>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="certifications">
+  <div class="wrap">
+    <p class="section-label"><span></span> Certifications</p>
+    <h2 class="section-title">Certifications</h2>
+    <ul class="cert-list">
+      <li class="cert-list__item">
+        <span class="cert-list__name">AWS Certified AI Practitioner</span>
+        <span class="cert-list__status--progress">In Progress</span>
+      </li>
+      <li class="cert-list__item">
+        <span class="cert-list__name">Cisco Networking Academy — Switching, Routing and Wireless Essentials (SRWE)</span>
+        <span class="cert-list__status--progress">In Progress</span>
+      </li>
+      <li class="cert-list__item">
+        <span class="cert-list__name">Cisco Networking Academy — Enterprise Networking, Security and Automation (ENSA)</span>
+        <span class="cert-list__status--progress">In Progress</span>
+      </li>
+      <li class="cert-list__item">
+        <span class="cert-list__name">Cisco Networking Academy — Cyber Threat Management</span>
+        <span class="cert-list__date">Nov 2024</span>
+      </li>
+      <li class="cert-list__item">
+        <span class="cert-list__name">Cisco Networking Academy — Endpoint Security</span>
+        <span class="cert-list__date">Dec 2024</span>
+      </li>
+      <li class="cert-list__item">
+        <span class="cert-list__name">IBM — Introduction to Data Analytics</span>
+        <span class="cert-list__date">Sep 2023</span>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -538,6 +862,163 @@
   </div>
 </section>
 
+<!-- SKILLS -->
+<section id="skills" class="skills">
+  <div class="wrap">
+    <p class="section-label"><span></span> Technical Skills</p>
+    <h2 class="section-title">What I Work With</h2>
+
+    <div class="skills-group">
+      <p class="skills-group__label">Cloud &amp; DevOps</p>
+      <ul class="skills-group__list">
+        <li>AWS — AI Practitioner (in progress)</li>
+        <li>Docker</li>
+        <li>FastAPI</li>
+        <li>Terraform</li>
+        <li>Prometheus &amp; Grafana</li>
+        <li>Git</li>
+      </ul>
+    </div>
+
+    <div class="skills-group">
+      <p class="skills-group__label">Computer Vision &amp; ML</p>
+      <ul class="skills-group__list">
+        <li>TensorFlow / PyTorch</li>
+        <li>OpenCV</li>
+        <li>YOLOv8</li>
+        <li>ONNX / Model Quantization</li>
+      </ul>
+    </div>
+
+    <div class="skills-group">
+      <p class="skills-group__label">Agentic AI &amp; Automation</p>
+      <ul class="skills-group__list">
+        <li>n8n</li>
+        <li>Ollama</li>
+        <li>LangChain</li>
+      </ul>
+    </div>
+
+    <div class="skills-group">
+      <p class="skills-group__label">Core Languages &amp; Embedded</p>
+      <ul class="skills-group__list">
+        <li>Python</li>
+        <li>C++ / Java</li>
+        <li>MATLAB</li>
+        <li>Arduino</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio" class="portfolio">
+  <div class="wrap">
+    <div class="portfolio__intro">
+      <p class="section-label"><span></span> Engineering Portfolio</p>
+      <h2 class="section-title">Three projects, three stages of maturity</h2>
+      <p class="portfolio__subheading">
+        Each project below is labelled by what it actually is right now —
+        a deployed system, a live demo, or a documented learning exercise —
+        rather than overstating any of them.
+      </p>
+    </div>
+
+    <div class="portfolio__grid">
+
+      <!-- Card 1: PSM -->
+      <article class="project-card">
+        <span class="project-card__status project-card__status--production">
+          Production-Tested
+        </span>
+        <h3 class="project-card__title">Palm Fruit Ripeness Classification System</h3>
+        <p class="project-card__desc">
+          Trained and benchmarked five CNN architectures
+          (MobileNetV2, MobileNetV3, EfficientNetB0, ShuffleNetV2, ResNet18)
+          for on-device ripeness classification, selecting MobileNetV2 for the
+          best accuracy-to-latency tradeoff. Deployed as real-time edge
+          inference on a Raspberry Pi 4B. The system also includes a FastAPI
+          serving layer, Prometheus observability, a Grafana dashboard, and
+          Terraform-provisioned cloud infrastructure — built and CI-tested,
+          with cloud deployment applied on demand rather than run continuously.
+        </p>
+        <ul class="project-card__stack">
+          <li>Python</li>
+          <li>TensorFlow / PyTorch</li>
+          <li>TFLite</li>
+          <li>FastAPI</li>
+          <li>Docker</li>
+          <li>Prometheus + Grafana</li>
+          <li>Terraform</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://github.com/JeffYeo0406/PalmFruitRipenessClassificationSystem" class="project-card__link" target="_blank">
+            View Repo →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 2: PPE -->
+      <article class="project-card">
+        <span class="project-card__status project-card__status--demo">
+          Deployed Demo
+        </span>
+        <h3 class="project-card__title">PPE Compliance Detection System</h3>
+        <p class="project-card__desc">
+          Quantised a YOLOv8n model to INT8 ONNX for real-time detection across
+          14 personal protective equipment classes (mAP@50: 0.776). Served
+          through a Gradio interface with dual-backend inference — local ONNX
+          by default, with automatic fallback to a serverless API — and
+          deployed live on Hugging Face Spaces with a CI pipeline validating
+          the exported model artifact on every push.
+        </p>
+        <ul class="project-card__stack">
+          <li>YOLOv8</li>
+          <li>ONNX Runtime</li>
+          <li>Gradio</li>
+          <li>OpenCV</li>
+          <li>GitHub Actions</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://jeffyeo-cvpr-ppe-demo.hf.space/" class="project-card__link project-card__link--primary" target="_blank">
+            Live Demo →
+          </a>
+          <a href="https://github.com/JeffYeo0406/PPE-Compliance-Detection-System" class="project-card__link" target="_blank">
+            View Repo →
+          </a>
+        </div>
+      </article>
+
+      <!-- Card 3: RAG -->
+      <article class="project-card">
+        <span class="project-card__status project-card__status--learning">
+          Exploratory Learning
+        </span>
+        <h3 class="project-card__title">Agentic RAG Exploration</h3>
+        <p class="project-card__desc">
+          Self-directed exploration of retrieval-augmented generation and
+          multi-agent orchestration using n8n and locally-hosted Ollama models.
+          Documents real engineering trade-offs encountered along the way —
+          including why a deterministic retrieval chain replaced an open-ended
+          AI agent, and how Docker-to-host networking was resolved.
+        </p>
+        <ul class="project-card__stack">
+          <li>n8n</li>
+          <li>Ollama</li>
+          <li>LangChain</li>
+          <li>Docker Compose</li>
+        </ul>
+        <div class="project-card__links">
+          <a href="https://github.com/JeffYeo0406/Agentic-RAG-Exploration" class="project-card__link" target="_blank">
+            View Repo →
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <!-- RESEARCH -->
 <section id="research">
   <div class="wrap">
@@ -561,11 +1042,19 @@
         <span class="badge amber">⏳ Ongoing · PSM1</span>
         <h3>Deep Learning-Based Oil Palm Ripeness Classification</h3>
         <p>
-          Designing a CNN-based vision system to replace manual oil palm grading with high-precision, automated classification across four ripeness stages — Unripe, Under-ripe, Ripe, and Over-ripe — to optimise Oil Extraction Rate (OER).
+          Designing a CNN-based vision system to replace manual oil palm grading with high-precision, automated classification across three MPOB-Standard ripeness stages — Under-ripe, Ripe, and Over-ripe — to optimise Oil Extraction Rate (OER).
+        </p>
+        <p class="research-item__note">
+          Full engineering build — architecture, deployment, and results — is
+          documented in the <a href="#portfolio">Portfolio</a> section above.
+          A formal paper based on this work is planned for future publication.
         </p>
         <a class="research-link" href="Documents/PSM1_Project_Proposal_B022220074_Yeo_Kheong_Jie.pdf" target="_blank">
           View Proposal PDF →
         </a>
+        <span class="research-item__link--disabled" aria-disabled="true">
+          Published Paper — coming soon
+        </span>
       </div>
 
     </div>
@@ -583,7 +1072,9 @@
     <div class="footer-links">
       <a href="https://github.com/JeffYeo0406" target="_blank">GitHub</a>
       <a href="https://www.linkedin.com/in/yeo-kheong-jie-1038421b4/" target="_blank">LinkedIn</a>
+      <a href="https://huggingface.co/JeffYeo" target="_blank">Hugging Face</a>
     </div>
+    <p class="footer__updated">Last updated: July 2026 · Graduated July 2026</p>
   </div>
 </footer>
 
